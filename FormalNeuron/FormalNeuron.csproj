@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ConstOutput.cs" />
     <Compile Include="FormalNeuron.cs" />
+    <Compile Include="FunctionNeuron.cs" />
     <Compile Include="ILazyOutput.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

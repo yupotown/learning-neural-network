@@ -15,6 +15,16 @@ namespace NeuralNetwork
             andNeuron.SetWeights(ConstOutput.CreateArray(1.0, 1.0));
             andNeuron.Threshold = ConstOutput.Create(1.5);
 
+            // xor
+            var xorOutputNeuron = new FormalNeuron(2);
+            var xorNeuron1 = new FormalNeuron(2);
+            var xorOutputNeuronThreshold = FunctionNeuron.Create((bool v) => v ? 2.5 : 0.5);
+            xorOutputNeuron.SetWeights(ConstOutput.CreateArray(1.0, 1.0));
+            xorOutputNeuron.Threshold = xorOutputNeuronThreshold;
+            xorOutputNeuronThreshold.Input = xorNeuron1;
+            xorNeuron1.SetWeights(ConstOutput.CreateArray(1.0, 1.0));
+            xorNeuron1.Threshold = ConstOutput.Create(1.5);
+
             while (true)
             {
                 var input = Console.ReadLine().Split(' ').ToArray();
@@ -29,6 +39,12 @@ namespace NeuralNetwork
                 {
                     andNeuron.SetInputs(ConstOutput.CreateArray(prms));
                     Console.WriteLine(andNeuron.Output ? 1 : 0);
+                }
+                else if (name == "xor")
+                {
+                    xorOutputNeuron.SetInputs(ConstOutput.CreateArray(prms));
+                    xorNeuron1.SetInputs(ConstOutput.CreateArray(prms));
+                    Console.WriteLine(xorOutputNeuron.Output ? 1 : 0);
                 }
                 else
                 {
