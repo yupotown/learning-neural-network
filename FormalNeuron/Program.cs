@@ -13,11 +13,35 @@ namespace NeuralNetwork
             // input
             var inputs = ConstOutput.CreateArray(false, false);
 
+            // not
+            var notNeuron = new FormalNeuron(1);
+            notNeuron.SetInputs(inputs);
+            notNeuron.SetWeights(ConstOutput.CreateArray(-1.0));
+            notNeuron.Threshold = ConstOutput.Create(-0.5);
+
             // and
             var andNeuron = new FormalNeuron(2);
             andNeuron.SetInputs(inputs);
             andNeuron.SetWeights(ConstOutput.CreateArray(1.0, 1.0));
             andNeuron.Threshold = ConstOutput.Create(1.5);
+
+            // nand
+            var nandNeuron = new FormalNeuron(2);
+            nandNeuron.SetInputs(inputs);
+            nandNeuron.SetWeights(ConstOutput.CreateArray(-1.0, -1.0));
+            nandNeuron.Threshold = ConstOutput.Create(-1.5);
+
+            // or
+            var orNeuron = new FormalNeuron(2);
+            orNeuron.SetInputs(inputs);
+            orNeuron.SetWeights(ConstOutput.CreateArray(1.0, 1.0));
+            orNeuron.Threshold = ConstOutput.Create(0.5);
+
+            // nor
+            var norNeuron = new FormalNeuron(2);
+            norNeuron.SetInputs(inputs);
+            norNeuron.SetWeights(ConstOutput.CreateArray(-1.0, -1.0));
+            norNeuron.Threshold = ConstOutput.Create(-0.5);
 
             // xor
             var xorNeuron = new FormalNeuron(2);
@@ -33,7 +57,11 @@ namespace NeuralNetwork
 
             // names
             var names = new Dictionary<string, ILazyOutput<bool>>();
+            names.Add("not", notNeuron);
             names.Add("and", andNeuron);
+            names.Add("nand", nandNeuron);
+            names.Add("or", orNeuron);
+            names.Add("nor", norNeuron);
             names.Add("xor", xorNeuron);
 
             while (true)
