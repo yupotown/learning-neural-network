@@ -88,9 +88,9 @@ namespace NeuralNetwork
         /// <param name="weights"></param>
         public void SetWeights(params ILazyOutput<double>[] weights)
         {
-            Contract.Requires(weights.Length == InputCount);
+            Contract.Requires(weights.Length >= InputCount);
 
-            Array.Copy(weights, Weights, weights.Length);
+            Array.Copy(weights, Weights, Weights.Length);
         }
 
         /// <summary>
@@ -99,9 +99,9 @@ namespace NeuralNetwork
         /// <param name="inputs"></param>
         public void SetInputs(params ILazyOutput<bool>[] inputs)
         {
-            Contract.Requires(inputs.Length == InputCount);
+            Contract.Requires(inputs.Length >= InputCount);
 
-            Array.Copy(inputs, Inputs, inputs.Length);
+            Array.Copy(inputs, Inputs, Inputs.Length);
         }
     }
 }

@@ -45,15 +45,17 @@ namespace NeuralNetwork
 
             // xor
             var xorNeuron = new FormalNeuron(2);
-            var xorNeuron1 = new FormalNeuron(2);
-            var xorNeuronThreshold = FunctionNeuron.Create((bool v) => v ? 2.5 : 0.5);
-            xorNeuron.SetInputs(inputs);
-            xorNeuron.SetWeights(ConstOutput.CreateArray(1.0, 1.0));
-            xorNeuron.Threshold = xorNeuronThreshold;
-            xorNeuronThreshold.Input = xorNeuron1;
-            xorNeuron1.SetInputs(inputs);
-            xorNeuron1.SetWeights(ConstOutput.CreateArray(1.0, 1.0));
-            xorNeuron1.Threshold = ConstOutput.Create(1.5);
+            var xorAndNeuron = new FormalNeuron(2);
+            var xorOrNeuron = new FormalNeuron(2);
+            xorAndNeuron.SetInputs(inputs);
+            xorAndNeuron.SetWeights(ConstOutput.CreateArray(1.0, 1.0));
+            xorAndNeuron.Threshold = ConstOutput.Create(1.5);
+            xorOrNeuron.SetInputs(inputs);
+            xorOrNeuron.SetWeights(ConstOutput.CreateArray(1.0, 1.0));
+            xorOrNeuron.Threshold = ConstOutput.Create(0.5);
+            xorNeuron.SetInputs(xorAndNeuron, xorOrNeuron);
+            xorNeuron.SetWeights(ConstOutput.CreateArray(-1.0, 1.0));
+            xorNeuron.Threshold = ConstOutput.Create(0.5);
 
             // names
             var names = new Dictionary<string, ILazyOutput<bool>>();
