@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormalNeuron", "FormalNeuro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxAndBeads", "BoxAndBeads\BoxAndBeads.csproj", "{EDE15FA3-ECE8-4FC2-BFA8-8AC7C50F8D0E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HierarchicalNeuralNetwork", "HierarchicalNeuralNetwork\HierarchicalNeuralNetwork.csproj", "{50ADC019-7F61-4B44-87F0-504332EC4864}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EDE15FA3-ECE8-4FC2-BFA8-8AC7C50F8D0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDE15FA3-ECE8-4FC2-BFA8-8AC7C50F8D0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDE15FA3-ECE8-4FC2-BFA8-8AC7C50F8D0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50ADC019-7F61-4B44-87F0-504332EC4864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50ADC019-7F61-4B44-87F0-504332EC4864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50ADC019-7F61-4B44-87F0-504332EC4864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50ADC019-7F61-4B44-87F0-504332EC4864}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
