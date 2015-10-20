@@ -48,6 +48,19 @@ namespace BoxAndBeads
             set { state[x, y] = value; }
         }
 
+        public MaruBatsu Clone()
+        {
+            var res = new MaruBatsu();
+            for (var y = 0; y < 3; ++y)
+            {
+                for (var x = 0; x < 3; ++x)
+                {
+                    res[x, y] = this[x, y];
+                }
+            }
+            return res;
+        }
+
         private bool won(State player)
         {
             return

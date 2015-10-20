@@ -8,16 +8,19 @@ namespace BoxAndBeads
 {
     class Box
     {
-        public Box(int initCount)
+        public Box(MaruBatsu mb, int initCount)
         {
             Beads = new List<Bead>();
             for (var y = 0; y < 3; ++y)
             {
                 for (var x = 0; x < 3; ++x)
                 {
-                    for (var i = 0; i < initCount; ++i)
+                    if (mb[x, y] == MaruBatsu.State.None)
                     {
-                        Beads.Add(new Bead(x, y));
+                        for (var i = 0; i < initCount; ++i)
+                        {
+                            Beads.Add(new Bead(x, y));
+                        }
                     }
                 }
             }
@@ -42,11 +45,21 @@ namespace BoxAndBeads
         {
             for (var i = 0; i < count; ++i)
             {
-                Beads.Add(bead);
+                Beads.Add(bead.Clone());
             }
         }
 
         public List<Bead> Beads { get; private set; }
+
+        public Box Clone()
+        {
+            var res = new Box(new MaruBatsu() ,0);
+            foreach (var bead in Beads)
+            {
+                res.Beads.Add(bead.Clone());
+            }
+            return res;
+        }
 
         private Random rnd = new Random();
     }

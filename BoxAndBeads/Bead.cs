@@ -16,5 +16,10 @@ namespace BoxAndBeads
 
         public int X { get; set; }
         public int Y { get; set; }
+
+        public Bead Clone()
+        {
+            return new Bead(X, Y);
+        }
     }
 }
