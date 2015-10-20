@@ -46,6 +46,8 @@ namespace NeuralNetwork
                         newInputs[i] = new ConstOutput<bool>(false);
                     }
                 }
+                Weights = newWeights;
+                Inputs = newInputs;
             }
         }
 
