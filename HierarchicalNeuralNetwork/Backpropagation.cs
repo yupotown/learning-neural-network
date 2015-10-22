@@ -115,13 +115,13 @@ namespace HierarchicalNeuralNetwork
                     for (var j = 0; j < prevCnt; ++j)
                     {
                         dw[layer][i][j] =
-                            LearningRate * delta[layer][i] * Network[layer - 1, j].Output;
-                            //+ StabilizationRate * dw[layer][i][j];
+                            LearningRate * delta[layer][i] * Network[layer - 1, j].Output
+                            + StabilizationRate * dw[layer][i][j];
                         neuron.Weights[j] += dw[layer][i][j];
                     }
                     dh[layer][i] =
-                        LearningRate * delta[layer][i];
-                        //+ StabilizationRate * dh[layer][i];
+                        LearningRate * delta[layer][i]
+                        + StabilizationRate * dh[layer][i];
                     neuron.Threshold += dh[layer][i];
                 }
             }

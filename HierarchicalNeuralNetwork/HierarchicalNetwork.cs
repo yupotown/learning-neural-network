@@ -33,9 +33,9 @@ namespace HierarchicalNeuralNetwork
                         for (var k = 0; k < ncnt[i - 1]; ++k)
                         {
                             neurons[i][j].Inputs[k] = neurons[i - 1][k];
-                            neurons[i][j].Weights[k] = (rnd.NextDouble() - 0.5) / 5.0;
+                            neurons[i][j].Weights[k] = rnd.NextDouble() / 10.0;
                         }
-                        neurons[i][j].Threshold = (rnd.NextDouble() - 0.5) / 5.0;
+                        neurons[i][j].Threshold = rnd.NextDouble() / 10.0;
                     }
                 }
             }

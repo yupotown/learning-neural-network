@@ -25,10 +25,13 @@ namespace HierarchicalNeuralNetwork
                 Tuple.Create(new double[]{1.0, 1.0}, new double[]{0.0}),
             };
             var rnd = new Random();
-            for (var i = 0; i < 100000; ++i)
+            for (var i = 0; i < 5000; ++i)
             {
-                var ex = examples[rnd.Next(examples.Count)];
-                bp.Train(ex.Item1, ex.Item2);
+                var ex = examples.OrderBy(v => Guid.NewGuid()).ToArray(); // shuffle
+                for (var j = 0; j < 4; ++j)
+                {
+                    bp.Train(ex[j].Item1, ex[j].Item2);
+                }
             }
 
             while (true)
