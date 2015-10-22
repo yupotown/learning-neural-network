@@ -11,9 +11,10 @@ namespace HierarchicalNeuralNetwork
     {
         public Neuron(int inputCount)
         {
-            Weights = new IOutput[0];
+            Weights = new double[0];
             Inputs = new IOutput[0];
             InputCount = inputCount;
+            Threshold = 0.0;
             TransferFunction = ((double v) => 1 / (1 + Math.Exp(-v)));
             InnerState = 0.0;
             Output = 0.0;
@@ -27,10 +28,10 @@ namespace HierarchicalNeuralNetwork
             var sum = 0.0;
             for (var i = 0; i < Inputs.Length; ++i)
             {
-                sum += Weights[i].Output * Inputs[i].Output;
+                sum += Weights[i] * Inputs[i].Output;
             }
             InnerState = sum;
-            Output = TransferFunction(InnerState);
+            Output = TransferFunction(InnerState + Threshold);
         }
 
         /// <summary>
@@ -48,7 +49,7 @@ namespace HierarchicalNeuralNetwork
             {
                 Contract.Requires(value >= 0);
 
-                var newWeights = new IOutput[value];
+                var newWeights = new double[value];
                 var newInputs = new IOutput[value];
                 for (var i = 0; i < value; ++i)
                 {
@@ -59,7 +60,7 @@ namespace HierarchicalNeuralNetwork
                     }
                     else
                     {
-                        newWeights[i] = new ConstOutput(1.0);
+                        newWeights[i] = 1.0;
                         newInputs[i] = new ConstOutput(0.0);
                     }
                 }
@@ -71,7 +72,7 @@ namespace HierarchicalNeuralNetwork
         /// <summary>
         /// 重み
         /// </summary>
-        public IOutput[] Weights { get; private set; }
+        public double[] Weights { get; private set; }
 
         /// <summary>
         /// 入力
@@ -79,9 +80,14 @@ namespace HierarchicalNeuralNetwork
         public IOutput[] Inputs { get; private set; }
 
         /// <summary>
+        /// しきい値
+        /// </summary>
+        public double Threshold { get; set; }
+
+        /// <summary>
         /// 伝達関数
         /// </summary>
-        public Func<double, double> TransferFunction { get; private set; }
+        public Func<double, double> TransferFunction { get; set; }
 
         /// <summary>
         /// 内部状態(入力と重みの積の総和)
@@ -97,7 +103,7 @@ namespace HierarchicalNeuralNetwork
         /// 重みを設定する。
         /// </summary>
         /// <param name="weights"></param>
-        public void SetWeights(params IOutput[] weights)
+        public void SetWeights(params double[] weights)
         {
             Contract.Requires(weights.Length >= Weights.Length);
 

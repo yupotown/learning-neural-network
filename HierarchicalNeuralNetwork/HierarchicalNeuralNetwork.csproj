@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backpropagation.cs" />
     <Compile Include="ConstOutput.cs" />
+    <Compile Include="HierarchicalNetwork.cs" />
     <Compile Include="IOutput.cs" />
     <Compile Include="Neuron.cs" />
     <Compile Include="Program.cs" />
