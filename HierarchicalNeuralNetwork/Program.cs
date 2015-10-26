@@ -13,17 +13,29 @@ namespace HierarchicalNeuralNetwork
         {
             Func<double, double> f = ((double x) => 1 / (1 + Math.Exp(-x)));
             Func<double, double> df = (x => f(x) * (1 - f(x)));
-            var nn = new HierarchicalNetwork(2, 2, 1);
+
+            // ネットワークの情報読み込み
+            HierarchicalNetwork nn;
+            var examples = new List<Tuple<double[], double[]>>();
+
+            Console.Error.Write("path >");
+            var path = Console.ReadLine();
+            using (var reader = new StreamReader(path))
+            {
+                nn = new HierarchicalNetwork(reader.ReadLine().Split(' ').Select(v => int.Parse(v)).ToArray());
+                var exNum = int.Parse(reader.ReadLine());
+                for (var i = 0; i < exNum; ++i)
+                {
+                    var io = reader.ReadLine().Split('|').ToList();
+                    examples.Add(Tuple.Create(
+                        io[0].Split(' ').Select(v => double.Parse(v)).ToArray(),
+                        io[1].Split(' ').Select(v => double.Parse(v)).ToArray()
+                        ));
+                }
+            }
 
             // 学習
             var bp = new Backpropagation(nn, df, 0.8, 0.75);
-            var examples = new List<Tuple<double[], double[]>>()
-            {
-                Tuple.Create(new double[]{0.0, 0.0}, new double[]{0.0}),
-                Tuple.Create(new double[]{0.0, 1.0}, new double[]{1.0}),
-                Tuple.Create(new double[]{1.0, 0.0}, new double[]{1.0}),
-                Tuple.Create(new double[]{1.0, 1.0}, new double[]{0.0}),
-            };
             var rnd = new Random();
             for (var i = 0; i < 5000; ++i)
             {
@@ -36,10 +48,14 @@ namespace HierarchicalNeuralNetwork
 
             while (true)
             {
+                Console.Error.Write("input >");
                 var inputs = Console.ReadLine().Split(' ').Select(v => new ConstOutput(double.Parse(v))).ToArray();
                 nn.SetInputs(inputs);
                 nn.Fire();
-                Console.WriteLine("{0:0.0########################################################}", nn[2, 0].Output);
+                foreach (var o in nn.GetOutputs())
+                {
+                    Console.WriteLine("{0:0.0########################################################}", o);
+                }
             }
         }
     }
