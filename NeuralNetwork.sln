@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxAndBeads", "BoxAndBeads\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HierarchicalNeuralNetwork", "HierarchicalNeuralNetwork\HierarchicalNeuralNetwork.csproj", "{50ADC019-7F61-4B44-87F0-504332EC4864}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetworkGraph", "NeuralNetworkGraph\NeuralNetworkGraph.csproj", "{4B9EB676-4E3E-492A-924A-0CB19EFB8B95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetwork", "NeuralNetwork\NeuralNetwork.csproj", "{674289A5-272A-4A15-A7A7-9F58DF08965F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetworkGraphTest", "NeuralNetworkGraphTest\NeuralNetworkGraphTest.csproj", "{D41D0A60-2DF7-4DB5-8FDF-B4513BFD3217}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +33,18 @@ Global
 		{50ADC019-7F61-4B44-87F0-504332EC4864}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50ADC019-7F61-4B44-87F0-504332EC4864}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50ADC019-7F61-4B44-87F0-504332EC4864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B9EB676-4E3E-492A-924A-0CB19EFB8B95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B9EB676-4E3E-492A-924A-0CB19EFB8B95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B9EB676-4E3E-492A-924A-0CB19EFB8B95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B9EB676-4E3E-492A-924A-0CB19EFB8B95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{674289A5-272A-4A15-A7A7-9F58DF08965F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{674289A5-272A-4A15-A7A7-9F58DF08965F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{674289A5-272A-4A15-A7A7-9F58DF08965F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{674289A5-272A-4A15-A7A7-9F58DF08965F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D41D0A60-2DF7-4DB5-8FDF-B4513BFD3217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41D0A60-2DF7-4DB5-8FDF-B4513BFD3217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D41D0A60-2DF7-4DB5-8FDF-B4513BFD3217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D41D0A60-2DF7-4DB5-8FDF-B4513BFD3217}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
