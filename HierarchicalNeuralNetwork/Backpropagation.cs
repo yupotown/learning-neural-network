@@ -15,6 +15,7 @@ namespace HierarchicalNeuralNetwork
             DiffTransferFunction = diffTransferFunction;
             LearningRate = learningRate;
             StabilizationRate = stabilizationRate;
+            Error = 0.0;
 
             // allocation
             var layers = Network.LayersCount;
@@ -66,6 +67,11 @@ namespace HierarchicalNeuralNetwork
         public double StabilizationRate { get; set; }
 
         /// <summary>
+        /// 誤差関数の値
+        /// </summary>
+        public double Error { get; private set; }
+
+        /// <summary>
         /// 1つの入力とそれに対する教師信号を用いて、1ステップの学習を行う。
         /// 連続で呼び出した場合、前回の重み修正量としきい値修正量が慣性項として利用される。
         /// </summary>
@@ -80,6 +86,15 @@ namespace HierarchicalNeuralNetwork
             // 出力を得る
             Network.SetInputs(input.Select(v => new ConstOutput(v)).ToArray());
             Network.Fire();
+
+            // 誤差関数
+            Error = 0.0;
+            for (var i = 0; i < outCnt; ++i)
+            {
+                var d = supervisor[i] - Network[outLayer, i].Output;
+                Error += d * d;
+            }
+            Error /= 2;
 
             // 出力層の学習信号
             for (var i = 0; i < outCnt; ++i)

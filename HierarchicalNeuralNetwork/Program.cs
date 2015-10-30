@@ -38,12 +38,18 @@ namespace HierarchicalNeuralNetwork
             // 学習
             var bp = new Backpropagation(nn, df, 0.8, 0.75);
             var rnd = new Random();
-            for (var i = 0; i < 5000; ++i)
+            using (var writer = new StreamWriter("error.csv"))
             {
-                var ex = examples.OrderBy(v => Guid.NewGuid()).ToArray(); // shuffle
-                for (var j = 0; j < 4; ++j)
+                for (var i = 0; i < 1000; ++i)
                 {
-                    bp.Train(ex[j].Item1, ex[j].Item2);
+                    var ex = examples.OrderBy(v => Guid.NewGuid()).ToArray(); // shuffle
+                    var errSum = 0.0;
+                    for (var j = 0; j < ex.Length; ++j)
+                    {
+                        bp.Train(ex[j].Item1, ex[j].Item2);
+                        errSum += bp.Error;
+                    }
+                    writer.WriteLine("{0},{1}", i, errSum / ex.Length);
                 }
             }
 
